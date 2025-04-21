@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  php-service:
+    build: ./php-service
+    container_name: php-service
+    volumes:
+      - ./shared-volume:/app/uploads
+    ports:
+      - "8001:80"
+    depends_on:
+      - mysql
+    env_file:
+      - ./php-service/.env 
+    networks:
+      - internal
+
+  python-service:
+    build: ./python-service
+    container_name: python-service
+    volumes:
+      - ./shared-volume:/app/uploads
+      - ./python-service/results:/app/results
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./python-service/.env
+    networks:
+      - internal
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fileservice
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - internal
+
+volumes:
+  db_data:
+
+networks:
+  internal:
