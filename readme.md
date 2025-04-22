@@ -95,7 +95,6 @@ project-root/
 │   └── results/          # Mount for transformation results
 │
 ├── docker-compose.yml
-├── .env.example
 └── README.md
 ```
 
