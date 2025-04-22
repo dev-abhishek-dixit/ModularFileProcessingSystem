@@ -30,8 +30,8 @@ Handles:
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/modular-system.git
-cd modular-system
+git clone https://github.com/dev-abhishek-dixit/ModularFileProcessingSystem.git
+cd ModularFileProcessingSystem
 ```
 
 ### 2. Environment Files
@@ -54,13 +54,13 @@ DB_DATABASE=file_manager
 DB_USERNAME=root
 DB_PASSWORD=root
 
-API_AUTH_TOKEN=your-secret-token
+API_TOKEN=your-secret-token (set any random token)
 PYTHON_TRANSFORM_URL=http://python-service:8000/api/transform
 ```
 
 #### `python-service/.env`
 ```env
-AUTH_TOKEN=your-secret-token
+API_TOKEN=your-secret-token (set same token as in php-service .env)
 PHP_CALLBACK_URL=http://php-service/api/update-status
 ```
 
